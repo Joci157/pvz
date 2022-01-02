@@ -1,4 +1,21 @@
 .nuotraukos {
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.nuotrauka {
+  display: block;
+  max-width: 200px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+}
+
+.nuotraukosRemas {
+  width: 200px;
+  height: 150px;
+  margin-top: 8px;
 }

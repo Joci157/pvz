@@ -71,13 +71,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var renderForm = function renderForm() {
-  var formElement = document.createElement('form');
-  formElement.className = 'form-inline';
+  var formElement = document.createElement("form");
+  formElement.className = "form-inline";
   formElement.innerHTML = (0,_form__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  document.querySelector('main .card-body').appendChild(formElement);
+  document.querySelector("main .card-body").appendChild(formElement);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderForm);
+
+/***/ }),
+
+/***/ "./src/modules/renderResult.js":
+/*!*************************************!*\
+  !*** ./src/modules/renderResult.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var renderImage = function renderImage(imgSrc) {
+  var img = document.createElement("img");
+  img.src = imgSrc;
+  img.className = "nuotrauka";
+  var imgWrapper = document.createElement("div");
+  imgWrapper.className = "nuotraukosRemas";
+  imgWrapper.appendChild(img);
+  document.querySelector(".nuotraukos").appendChild(imgWrapper);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderImage);
 
 /***/ }),
 
@@ -92,6 +116,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _ajaxService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajaxService */ "./src/modules/ajaxService.js");
+/* harmony import */ var _renderResult__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderResult */ "./src/modules/renderResult.js");
+
 
 
 var searchCode = function searchCode() {
@@ -101,13 +127,13 @@ var searchCode = function searchCode() {
     var apiFetchResult;
     (0,_ajaxService__WEBPACK_IMPORTED_MODULE_0__["default"])(searchTerm).then(function (result) {
       return apiFetchResult = result;
-    }); //   .then(() => console.log(searchResponse.data[0].post_code))
-    //   .then(
-    //     () =>
-    //       (document.querySelector(".result").value =
-    //         searchResponse.data[0].post_code)
-    //   );
-    // console.log(searchResponse);
+    }).then(function () {
+      return console.log("Rezultatas", apiFetchResult);
+    }).then(function () {
+      for (var i = 0; i < apiFetchResult.message.length; i++) {
+        (0,_renderResult__WEBPACK_IMPORTED_MODULE_1__["default"])(apiFetchResult.message[i]);
+      }
+    });
   });
 };
 
