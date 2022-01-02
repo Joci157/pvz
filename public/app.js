@@ -57,6 +57,27 @@ var form = function form() {
 
 /***/ }),
 
+/***/ "./src/modules/renderError.js":
+/*!************************************!*\
+  !*** ./src/modules/renderError.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var renderError = function renderError() {
+  var errorDiv = document.createElement("div");
+  errorDiv.className = "klaida";
+  errorDiv.innerHTML = "Suniuko veisle nebuvo rasta";
+  document.querySelector("main").appendChild(errorDiv);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderError);
+
+/***/ }),
+
 /***/ "./src/modules/renderForm.js":
 /*!***********************************!*\
   !*** ./src/modules/renderForm.js ***!
@@ -116,12 +137,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _ajaxService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajaxService */ "./src/modules/ajaxService.js");
-/* harmony import */ var _renderResult__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderResult */ "./src/modules/renderResult.js");
+/* harmony import */ var _renderError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderError */ "./src/modules/renderError.js");
+/* harmony import */ var _renderResult__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderResult */ "./src/modules/renderResult.js");
+
 
 
 
 var searchCode = function searchCode() {
   document.querySelector("form").addEventListener("submit", function (e) {
+    document.querySelector(".nuotraukos").innerHTML = "";
     e.preventDefault();
     var searchTerm = document.querySelector(".term").value;
     var apiFetchResult;
@@ -130,9 +154,15 @@ var searchCode = function searchCode() {
     }).then(function () {
       return console.log("Rezultatas", apiFetchResult);
     }).then(function () {
-      for (var i = 0; i < apiFetchResult.message.length; i++) {
-        (0,_renderResult__WEBPACK_IMPORTED_MODULE_1__["default"])(apiFetchResult.message[i]);
+      if (apiFetchResult.status === "success") {
+        for (var i = 0; i < apiFetchResult.message.length; i++) {
+          (0,_renderResult__WEBPACK_IMPORTED_MODULE_2__["default"])(apiFetchResult.message[i]);
+        }
+      } else {
+        (0,_renderError__WEBPACK_IMPORTED_MODULE_1__["default"])();
       }
+    })["catch"](function (error) {
+      return console.log(error);
     });
   });
 };

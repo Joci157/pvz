@@ -11302,3 +11302,15 @@ textarea.form-control-lg {
   height: 150px;
   margin-top: 8px;
 }
+
+.klaida {
+  position: absolute;
+  z-index: 5;
+  background-color: red;
+  top: 40%;
+  left: 0px;
+  right: 0px;
+  width: 200px;
+  height: 200px;
+  font-size: 30px;
+}
