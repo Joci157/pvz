@@ -98,9 +98,9 @@ var searchCode = function searchCode() {
   document.querySelector("form").addEventListener("submit", function (e) {
     e.preventDefault();
     var searchTerm = document.querySelector(".term").value;
-    var searchResponse;
+    var apiFetchResult;
     (0,_ajaxService__WEBPACK_IMPORTED_MODULE_0__["default"])(searchTerm).then(function (result) {
-      return console.log("rezultatas", result);
+      return apiFetchResult = result;
     }); //   .then(() => console.log(searchResponse.data[0].post_code))
     //   .then(
     //     () =>
