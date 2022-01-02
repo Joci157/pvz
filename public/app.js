@@ -29,9 +29,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var ajaxService = function ajaxService(term) {
-  var url = 'http://api.postit.lt/?term=';
-  var key = 'UNFYHJYNHGwWmFmG5Go1';
-  return fetch("".concat(url).concat(term, "&key=").concat(key)).then(function (response) {
+  var url = "https://dog.ceo/api/breeds/image/random";
+  return fetch(url).then(function (response) {
     return response.json();
   });
 };
@@ -51,7 +50,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var form = function form() {
-  return "<div class=\"form-group mb-2\">\n        <input type=\"text\" class=\"form-control term\" placeholder=\"Adresas\">\n    </div>\n    <div class=\"form-group mb-2\">\n        <input type=\"text\" class=\"form-control result\" readonly>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Ie\u0161koti kodo</button>\n    ";
+  return "<div class=\"form-group mb-2\">\n        <input type=\"text\" class=\"form-control term\" placeholder=\"\u012Eveskite \u0161uns veisl\u0119\">\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Ie\u0161koti</button>\n    ";
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (form);
