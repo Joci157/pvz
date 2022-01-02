@@ -28,9 +28,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var ajaxService = function ajaxService(term) {
-  var url = "https://dog.ceo/api/breeds/image/random";
-  return fetch(url).then(function (response) {
+var ajaxService = function ajaxService(breedName) {
+  var url = "https://dog.ceo/api/breed/";
+  return fetch("".concat(url).concat(breedName, "/images")).then(function (response) {
     return response.json();
   });
 };
@@ -95,18 +95,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var searchCode = function searchCode() {
-  document.querySelector('form').addEventListener('submit', function (e) {
-    e.preventDefault(); //keiciama standartine formos elgsena
-
-    var searchTerm = document.querySelector('.term').value;
+  document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var searchTerm = document.querySelector(".term").value;
     var searchResponse;
     (0,_ajaxService__WEBPACK_IMPORTED_MODULE_0__["default"])(searchTerm).then(function (result) {
-      return searchResponse = result;
-    }).then(function () {
-      return console.log(searchResponse.data[0].post_code);
-    }).then(function () {
-      return document.querySelector('.result').value = searchResponse.data[0].post_code;
-    });
+      return console.log("rezultatas", result);
+    }); //   .then(() => console.log(searchResponse.data[0].post_code))
+    //   .then(
+    //     () =>
+    //       (document.querySelector(".result").value =
+    //         searchResponse.data[0].post_code)
+    //   );
+    // console.log(searchResponse);
   });
 };
 
